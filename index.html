@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Creative Freelancer — Portfolio</title>
+  <meta name="description" content="Portfolio of a creative freelancer: projects, skills, services and contact." />
+  <style>
+    :root{
+      --bg:#0b1220; --card:#0e1724; --muted:#9fb0c8; --accent:#7dd3fc; --accent-2:#60a5fa;
+      --glass: rgba(255,255,255,0.03);
+      --maxw:1100px;
+      --radius:14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Segoe UI Mono', monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#e6f0fb;background:linear-gradient(180deg,#071022 0%,#071226 70%);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent-2),#34d399);display:flex;align-items:center;justify-content:center;font-weight:700;color:#012}
+    h1{margin:0;font-size:20px}
+    .lead{color:var(--muted);margin-top:4px;font-size:14px}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:22px;margin-top:22px}
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+
+    .intro h2{margin:0 0 6px 0}
+    .cta{display:flex;gap:8px;margin-top:12px}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:inherit;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#022}
+
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .project{padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent)}
+    .thumb{height:120px;border-radius:8px;background:linear-gradient(135deg,#0f1724,#092033);display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--mono);font-size:13px}
+    .pmeta{margin-top:8px;font-size:14px}
+    .tags{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .skills{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .skill{padding:10px;border-radius:10px;background:var(--glass)}
+    .progress{height:10px;border-radius:10px;background:rgba(255,255,255,0.04);overflow:hidden}
+    .progress > i{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+    aside.right{display:flex;flex-direction:column;gap:12px}
+    .contact-card{display:flex;flex-direction:column;gap:8px}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+    .projects-hero{margin-top:18px}
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      .projects{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CF</div>
+        <div>
+          <h1>Creative Freelancer</h1>
+          <div class="lead">Designer • Frontend Developer • Visual Storyteller</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#skills">Skills</a>
+        <a class="btn" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card intro">
+        <h2>Hi — I'm Alex, a product-minded designer who builds delightful web experiences.</h2>
+        <p class="small lead">I craft UI/UX, animations and front-end prototypes for startups and agencies. Below are selected projects, skills, and ways to get in touch.</p>
+
+        <div class="cta">
+          <a class="btn primary" href="#contact">Hire me</a>
+          <a class="btn" href="#projects">See work</a>
+        </div>
+
+        <div class="projects-hero" id="projects">
+          <h3 style="margin-top:16px;margin-bottom:8px">Selected Projects</h3>
+          <div class="projects" id="projectsGrid">
+            <!-- project items injected by JS -->
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h3 id="skills" style="margin-bottom:8px">Skills & Tools</h3>
+          <div class="skills" id="skillsGrid">
+            <!-- skills injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <aside class="right">
+        <div class="card contact-card" id="contact">
+          <h3>Contact</h3>
+          <div class="small">Available for freelance and contract work. Fill the form and I'll reply within 48 hours.</div>
+          <form id="contactForm" aria-label="Contact form">
+            <input id="name" name="name" placeholder="Your name" required />
+            <input id="email" name="email" placeholder="Your email" type="email" required />
+            <input id="subject" name="subject" placeholder="Subject" />
+            <textarea id="message" name="message" placeholder="Tell me about your project..." rows="5" required></textarea>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="btn primary" type="submit">Send Message</button>
+              <button class="btn" type="button" id="downloadCV">Download CV</button>
+            </div>
+            <div id="formMsg" class="small" style="margin-top:8px;color:var(--muted)"></div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h4>Services</h4>
+          <ul style="padding-left:18px;margin:8px 0;color:var(--muted)">
+            <li>Product design & prototyping</li>
+            <li>Frontend implementation (HTML/CSS/JS/React)</li>
+            <li>Branding & visual systems</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Quick Info</h4>
+          <div class="small">Based in: Remote (UTC+2)</div>
+          <div class="small">Available: Part-time / Contract</div>
+          <div class="small">Rate: Depends on scope — message for quote</div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="small">Made with care • Want this as a React component, or connected to a CMS (Netlify/Contentful)? I can convert it.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Sample project data
+    const PROJECTS = [
+      {title:'FinTrack Dashboard', desc:'Instrumented analytics dashboard for fintech app', tags:'React · D3 · UX', img:null, link:'#'},
+      {title:'Brand Refresh — Lumen', desc:'Logo, identity and website for product studio', tags:'Brand · Webflow', img:null, link:'#'},
+      {title:'ShopEase Mobile UI', desc:'Mobile-first e-commerce checkout flow', tags:'Figma · Prototyping', img:null, link:'#'},
+      {title:'Onboarding Flow', desc:'Higher conversion onboarding for SaaS', tags:'Research · UX', img:null, link:'#'},
+      {title:'Illustration System', desc:'Custom icons and hero illustrations', tags:'Illustrator · SVG', img:null, link:'#'},
+      {title:'Marketing Microsite', desc:'Fast, animated landing page', tags:'HTML · CSS · GSAP', img:null, link:'#'}
+    ];
+
+    const SKILLS = [
+      {name:'UX Design', level:92},
+      {name:'Frontend (HTML/CSS/JS)', level:90},
+      {name:'React', level:82},
+      {name:'Prototyping (Figma)', level:88},
+      {name:'Illustration', level:70},
+      {name:'Accessibility', level:78}
+    ];
+
+    function initProjects(){
+      const grid = document.getElementById('projectsGrid');
+      PROJECTS.forEach(p=>{
+        const el = document.createElement('div'); el.className='project';
+        const thumb = document.createElement('div'); thumb.className='thumb'; thumb.textContent = 'Preview';
+        const title = document.createElement('div'); title.className='pmeta'; title.innerHTML = `<strong>${escapeHtml(p.title)}</strong>`;
+        const desc = document.createElement('div'); desc.className='small'; desc.style.marginTop='6px'; desc.textContent = p.desc;
+        const tags = document.createElement('div'); tags.className='tags'; tags.textContent = p.tags;
+        const a = document.createElement('a'); a.href = p.link; a.target='_blank'; a.rel='noopener noreferrer';
+        a.appendChild(thumb);
+        el.appendChild(a); el.appendChild(title); el.appendChild(desc); el.appendChild(tags);
+        grid.appendChild(el);
+      });
+    }
+
+    function initSkills(){
+      const grid = document.getElementById('skillsGrid');
+      SKILLS.forEach(s=>{
+        const el = document.createElement('div'); el.className='skill';
+        el.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><div><strong>${escapeHtml(s.name)}</strong></div><div class="small">${s.level}%</div></div><div style="margin-top:8px" class="progress" aria-hidden><i style="width:${s.level}%"></i></div>`;
+        grid.appendChild(el);
+      });
+    }
+
+    // Contact form handling: local demo + mailto fallback
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      formMsg.textContent = 'Sending...';
+      const data = {
+        name:document.getElementById('name').value.trim(),
+        email:document.getElementById('email').value.trim(),
+        subject:document.getElementById('subject').value.trim(),
+        message:document.getElementById('message').value.trim(),
+        sentAt:new Date().toISOString()
+      };
+
+      // Try to POST to an API endpoint if available
+      try{
+        const resp = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+        if(resp.ok){ formMsg.textContent = 'Message sent — I will reply soon.'; form.reset(); return; }
+      }catch(err){ /* ignore, fallback to localStorage */ }
+
+      // Fallback: store locally and show mailto link suggestion
+      try{
+        const saved = JSON.parse(localStorage.getItem('cf_contacts')||'[]'); saved.unshift(data); localStorage.setItem('cf_contacts', JSON.stringify(saved));
+        formMsg.innerHTML = 'Saved locally. <span class="small">If you want instant email, <a href="mailto:hello@example.com?subject='+encodeURIComponent(data.subject||'New project')+'&body='+encodeURIComponent(data.message+'\n\nFrom: '+data.name+' <'+data.email+'>')+'">click to email</a>.</span>';
+        form.reset();
+      }catch(err){ formMsg.textContent = 'Unable to save message locally.'; }
+    });
+
+    document.getElementById('downloadCV').addEventListener('click', ()=>{
+      // Create a simple CV blob to download (demo)
+      const cvText = `Alex\nProduct Designer & Frontend Developer\nEmail: hello@example.com\n\nSkills:\n- UX Design\n- Frontend (HTML/CSS/JS)\n- React\n`;
+      const blob = new Blob([cvText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'Alex-CV.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    function escapeHtml(str){ return String(str||'').replace(/[&<>"']/g, function(s){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[s]; }); }
+
+    initProjects(); initSkills();
+  </script>
+</body>
+</html>
